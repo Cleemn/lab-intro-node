@@ -1,7 +1,7 @@
 class SortedList {
-  constructor(items) {
-    this.items = items;
-    this.length = items.length;
+  constructor() {
+    this.items = [];
+    this.length = 0;
   }
 
   add(item) {
@@ -35,16 +35,20 @@ class SortedList {
   }
 
   sum() {
-    return this.items.reduce((acc, value) => acc += value);
+    return this.items.reduce((acc, value) => acc + value, 0);
   }
 
   avg() {
-    return this.sum() / this.length;
+    if (this.items.length > 0) {
+      return this.sum() / this.length;
+    } else {
+      throw new Error('EmptySortedList');
+    }
   }
 }
 
-let list = new SortedList([2, 5, 6, 7, 8, 6, 9, 0]);
-console.log(list.length);
-console.log(list.avg());
+// let list = new SortedList([2, 5, 6, 7, 8, 6, 9, 0]);
+// console.log(list.length);
+// console.log(list.avg());
 
 module.exports = SortedList;
